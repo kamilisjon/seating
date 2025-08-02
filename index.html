@@ -73,6 +73,7 @@
             grid-template-rows: repeat(17, 40px);
             grid-template-columns: repeat(6, 40px);
             gap: 7px;
+            padding-top: 5rem;
         }
         .seat {
             border-radius: 50%;
@@ -86,7 +87,7 @@
         }
         .highlight {
             box-shadow: 0 0 20px #387876;
-            transform: scale(1.2);
+            transform: scale(1.4);
             z-index: 1;
             color: #00FFB7;
             font-weight: bold;
@@ -114,30 +115,30 @@
     </div>
     <script>
         const guestList = [
-            {name: "Domas", col: 1, row: 1},
-            {name: "Rugilė", col: 1, row: 2},
-            {name: "Gabija", col: 1, row: 3},
-            {name: "Mantvydas", col: 1, row: 4},
-            {name: "Eglė", col: 1, row: 5},
-            {name: "Vaiva", col: 1, row: 6},
-            {name: "Benas", col: 2, row: 1},
-            {name: "Dovilė", col: 2, row: 2},
-            {name: "Julius", col: 2, row: 3},
-            {name: "Odeta", col: 2, row: 4},
-            {name: "Tomas", col: 2, row: 5},
-            {name: "Karolina", col: 2, row: 6},
-            {name: "Valerija2", col: 5, row: 1},
-            {name: "Gvidas", col: 5, row: 2},
-            {name: "Vaidas", col: 5, row: 3},
-            {name: "Natalja", col: 5, row: 4},
-            {name: "Zigmas", col: 5, row: 5},
-            {name: "Jūratė", col: 5, row: 6},
-            {name: "Gelija", col: 6, row: 1},
-            {name: "Sofija", col: 6, row: 2},
-            {name: "Sandra", col: 6, row: 3},
-            {name: "Leonas", col: 6, row: 4},
-            {name: "Egidijus", col: 6, row: 5},
-            {name: "Kazimieras", col: 6, row: 6},
+            {name: "Domas", col: 1, row: 1, group: 1 },
+            {name: "Rugilė", col: 1, row: 2, group: 1 },
+            {name: "Gabija", col: 1, row: 3, group: 2 },
+            {name: "Mantvydas", col: 1, row: 4, group: 3 },
+            {name: "Eglė", col: 1, row: 5, group: 3 },
+            {name: "Vaiva", col: 1, row: 6, group: 4 },
+            {name: "Benas", col: 2, row: 1, group: 5 },
+            {name: "Dovilė", col: 2, row: 2, group: 6 },
+            {name: "Julius", col: 2, row: 3, group: 6 },
+            {name: "Odeta", col: 2, row: 4, group: 7 },
+            {name: "Tomas", col: 2, row: 5, group: 7 },
+            {name: "Karolina", col: 2, row: 6, group: 8 },
+            {name: "Valerja", col: 5, row: 1, group: 9 },
+            {name: "Gvidas", col: 5, row: 2, group: 9 },
+            {name: "Vaidas", col: 5, row: 3, group: 9 },
+            {name: "Natalja", col: 5, row: 4, group: 9 },
+            {name: "Zigmas", col: 5, row: 5, group: 10 },
+            {name: "Jūratė", col: 5, row: 6, group: 10 },
+            {name: "Gelija", col: 6, row: 1, group: 9 },
+            {name: "Sofija", col: 6, row: 2, group: 11 },
+            {name: "Sandra", col: 6, row: 3, group: 11 },
+            {name: "Leonas", col: 6, row: 4, group: 11 },
+            {name: "Egidijus", col: 6, row: 5, group: 11 },
+            {name: "Kazimieras", col: 6, row: 6, group: 12 },
         ];
         // Sort guests by name
         guestList.sort((a, b) => a.name.localeCompare(b.name));
@@ -164,9 +165,13 @@
             const input = document.getElementById('input-name').value;
             const guest = guestList.find(g => g.name.toLowerCase() === input.toLowerCase());
             if (guest) {
-                const seatDiv = document.getElementById(guest.name);
-                seatDiv.classList.add('highlight');
-                seatDiv.innerText = guest.name;
+                guestList.forEach(guest2 => {
+                    if (guest.group == guest2.group) {
+                        const seatDiv = document.getElementById(guest2.name);
+                        seatDiv.classList.add('highlight');
+                        seatDiv.innerText = guest2.name;
+                    }
+                });
                 document.getElementById('search-container').style.display = 'none';
                 layout.style.display = 'grid';
             } else {
