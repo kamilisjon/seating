@@ -13,7 +13,7 @@
             text-align: center;
             position: sticky;
             overflow: auto;
-            min-width: 100rem;
+            min-width: 40rem;
             background-color: rgb(17, 17, 17);
             margin: 0;
         }
@@ -26,24 +26,19 @@
         }
         #search-container {
             margin-bottom: 2rem;
+            position: relative;
         }
         #input-name {
             width: 30rem;
             height: 3rem;
             font-size: 1.7rem;
         }
-        #find-button {
-            height: 3.5rem;
-            font-size: 2rem;
-            background-color: grey;
-            color: white;
-            border: none;
-            cursor: pointer;
-        }
         #seating-layout {
             display: none;
             grid-template-rows: repeat(17, 3.3rem);
             grid-template-columns: repeat(6, 3.3rem);
+            left: 25rem;
+            top: 0rem;
             row-gap: 0.5rem;
             column-gap: 1.2rem;
             padding-top: 2rem;
@@ -90,6 +85,27 @@
             background-position: center;
             border-radius: 50%;
         }
+        #suggestions {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            width: 30rem;
+            max-height: 20rem;
+            overflow-y: auto;
+            background-color: white;
+            color: black;
+            display: none;
+            z-index: 10;
+            border: 1px solid #ccc;
+            border-top: none;
+        }
+        .suggestion-item {
+            padding: 0.5rem;
+            cursor: pointer;
+        }
+        .suggestion-item:hover {
+            background-color: lightgray;
+        }
         @media (max-width: 420px) {
             #seating-layout {
                 grid-template-rows: repeat(17, 3.3rem);
@@ -98,20 +114,21 @@
             #input-name {
                 width: 20rem;
             }
+            #suggestions {
+                width: 20rem;
+            }
         }
     </style>
 </head>
 <body>
     <div class="container">
         <div id="search-container">
-            <input list="guests" id="input-name" placeholder="Search your name" aria-label="Search for your name">
-            <datalist id="guests"></datalist>
-            <button id="find-button">Find My Seat</button>
+            <input id="input-name" placeholder="Search your name" aria-label="Search for your name">
+            <div id="suggestions"></div>
         </div>
         <div id="seating-layout"></div>
         <div id="message"></div>
     </div>
-    <div id="planet"></div>
     <script>
         const guestList = [
             {name:"Domas",c:1,r:1,grp:1}, {name:"Benas",c:2,r:1,grp:16}, {name:"Valeria",c:5,r:1,grp:17}, {name:"Gelija",c:6,r:1,grp:17},
@@ -134,13 +151,6 @@
         ];
         // Sort guests by name
         guestList.sort((a, b) => a.name.localeCompare(b.name));
-        // Populate datalist
-        const datalist = document.getElementById('guests');
-        guestList.forEach(guest => {
-            const option = document.createElement('option');
-            option.value = guest.name;
-            datalist.appendChild(option);
-        });
         // Create seat elements
         const layout = document.getElementById('seating-layout');
         guestList.forEach(guest => {
@@ -164,25 +174,53 @@
         rightTable.style.gridColumn = '5 / 7';
         rightTable.style.gridRow = '1 / 18';
         layout.appendChild(rightTable);
-        // Event listener for button
-        const button = document.getElementById('find-button');
-        button.addEventListener('click', () => {
-            const input = document.getElementById('input-name').value;
-            const guest = guestList.find(g => g.name.toLowerCase() === input.toLowerCase());
-            if (guest) {
-                guestList.forEach(guest2 => {
-                    if (guest.grp == guest2.grp) {
-                        const seatDiv = document.getElementById(guest2.name);
-                        seatDiv.classList.add('highlight');
-                        seatDiv.innerText = guest2.name;
-                    }
-                });
-                document.getElementById('search-container').style.display = 'none';
-                layout.style.display = 'grid';
-            } else {
-                alert('Guest not found');
-            }
+        // Autocomplete logic
+        const input = document.getElementById('input-name');
+        const suggestionsDiv = document.getElementById('suggestions');
+        input.addEventListener('input', handleInput);
+        input.addEventListener('blur', () => {
+            setTimeout(() => {
+                suggestionsDiv.style.display = 'none';
+            }, 100);
         });
+        function handleInput() {
+            const value = input.value.trim().toLowerCase();
+            suggestionsDiv.innerHTML = '';
+            suggestionsDiv.style.display = 'none';
+            if (value.length === 0) {
+                return;
+            }
+            const matches = guestList.filter(guest => guest.name.toLowerCase().startsWith(value));
+            if (matches.length > 0) {
+                matches.forEach(guest => {
+                    const item = document.createElement('div');
+                    item.classList.add('suggestion-item');
+                    item.textContent = guest.name;
+                    item.addEventListener('click', () => {
+                        input.value = guest.name;
+                        suggestionsDiv.innerHTML = '';
+                        suggestionsDiv.style.display = 'none';
+                        // Trigger seating
+                        const guestSelected = guestList.find(g => g.name.toLowerCase() === guest.name.toLowerCase());
+                        if (guestSelected) {
+                            guestList.forEach(g2 => {
+                                if (guestSelected.grp === g2.grp) {
+                                    const seatDiv = document.getElementById(g2.name);
+                                    seatDiv.classList.add('highlight');
+                                    seatDiv.innerText = g2.name;
+                                }
+                            });
+                            document.getElementById('search-container').style.display = 'none';
+                            layout.style.display = 'grid';
+                        } else {
+                            alert('Guest not found');
+                        }
+                    });
+                    suggestionsDiv.appendChild(item);
+                });
+                suggestionsDiv.style.display = 'block';
+            }
+        }
     </script>
 </body>
 </html>
