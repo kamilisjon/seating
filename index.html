@@ -43,8 +43,7 @@
             grid-template-rows: repeat(17, 40px);
             grid-template-columns: repeat(6, 40px);
             gap: 7px;
-            padding-top: 10rem;
-            padding-bottom: 10rem;
+            padding-top: 5rem;
         }
         .seat {
             border-radius: 50%;
@@ -57,11 +56,16 @@
             color: black;
         }
         .highlight {
-            box-shadow: 0 0 20px #387876;
-            transform: scale(1.4);
+            box-shadow: 0 0 20px #e3e2dc;
+            transform: scale(1.2);
             z-index: 1;
-            color: #00FFB7;
+            color: #FFDF00;
             font-weight: bold;
+            text-shadow: 
+            -1px -1px 0 #000,  
+            1px -1px 0 #000,
+            -1px 1px 0 #000,
+            1px 1px 0 #000;
         }
         @media (max-width: 420px) {
             #seating-layout {
