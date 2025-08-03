@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="lt">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, height=device-height initial-scale=1.0">
@@ -9,10 +9,11 @@
             background-size: cover;
             background-attachment: scroll;
             color: white;
-            font-family: sans-serif;
+            font-family: Arial;
             text-align: center;
             position: sticky;
-            overflow: auto;
+            overflow-x: auto;
+            overflow-y: scroll;
             min-width: 40rem;
             background-color: rgb(17, 17, 17);
             margin: 0;
@@ -25,13 +26,14 @@
             align-items: center;
         }
         #search-container {
-            margin-bottom: 2rem;
             position: relative;
         }
         #input-name {
+            border-radius: 0.5rem;
             width: 30rem;
             height: 3rem;
             font-size: 1.7rem;
+            text-align: center;
         }
         #seating-layout {
             display: none;
@@ -86,13 +88,14 @@
             border-radius: 50%;
         }
         #suggestions {
+            border-radius: 0.5rem;
             position: absolute;
             top: 100%;
             left: 0;
             width: 30rem;
             max-height: 20rem;
             overflow-y: auto;
-            background-color: white;
+            background-color: rgb(184, 173, 173);
             color: black;
             display: none;
             z-index: 10;
@@ -102,9 +105,6 @@
         .suggestion-item {
             padding: 0.5rem;
             cursor: pointer;
-        }
-        .suggestion-item:hover {
-            background-color: lightgray;
         }
         @media (max-width: 420px) {
             #seating-layout {
@@ -123,7 +123,7 @@
 <body>
     <div class="container">
         <div id="search-container">
-            <input id="input-name" placeholder="Search your name" aria-label="Search for your name">
+            <input id="input-name" placeholder="Įveskite vardą">
             <div id="suggestions"></div>
         </div>
         <div id="seating-layout"></div>
@@ -213,7 +213,7 @@
                             document.getElementById('search-container').style.display = 'none';
                             layout.style.display = 'grid';
                         } else {
-                            alert('Guest not found');
+                            alert('Vardas nerastas');
                         }
                     });
                     suggestionsDiv.appendChild(item);
