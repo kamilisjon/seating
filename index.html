@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, height=device-height initial-scale=1.0">
     <title>Seating</title>
     <style>
         body {
@@ -12,11 +12,11 @@
             font-family: sans-serif;
             text-align: center;
             position: relative;
-            overflow: auto;
+            overflow: visible;
             background-color: rgb(17, 17, 17);
         }
         .container {
-            height: auto;
+            height: fit-content;
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -76,7 +76,7 @@
         #planet {
             position: absolute;
             left: 0;
-            top: 50%;
+            top: 15rem;
             transform: translateY(-50%);
             width: 40rem;
             height: 40rem;
