@@ -73,6 +73,18 @@
             width: 3.5rem;
             justify-self: center;
         }
+        #planet {
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 40rem;
+            height: 40rem;
+            background-image: url('https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/3f4c4b7d-a2ad-49a4-ad0d-2327cab52046/decij2u-a630d864-8d06-4dd8-93f1-613204c24718.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcLzNmNGM0YjdkLWEyYWQtNDlhNC1hZDBkLTIzMjdjYWI1MjA0NlwvZGVjaWoydS1hNjMwZDg2NC04ZDA2LTRkZDgtOTNmMS02MTMyMDRjMjQ3MTgucG5nIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.gS0iTQw7VJ79khiifJUMZFSxG-N_MsKMN38BLJTosig');
+            background-size: cover;
+            background-position: center;
+            border-radius: 50%;
+        }
         @media (max-width: 420px) {
             #seating-layout {
                 grid-template-rows: repeat(17, 3.3rem);
@@ -94,6 +106,7 @@
         <div id="seating-layout"></div>
         <div id="message"></div>
     </div>
+    <div id="planet"></div>
     <script>
         const guestList = [
             {name:"Domas",c:1,r:1,grp:1}, {name:"Benas",c:2,r:1,grp:16}, {name:"Valeria",c:5,r:1,grp:17}, {name:"Gelija",c:6,r:1,grp:17},
