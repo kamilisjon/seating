@@ -12,27 +12,27 @@
             font-family: sans-serif;
             text-align: center;
             position: relative;
-            overflow: hidden;
+            overflow: auto;
             background-color: rgb(17, 17, 17);
         }
         .container {
-            height: 100vh;
+            height: auto;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
         }
         #search-container {
-            margin-bottom: 20px;
+            margin-bottom: 2rem;
         }
         #input-name {
-            width: 300px;
-            height: 30px;
-            font-size: 16px;
+            width: 30rem;
+            height: 3rem;
+            font-size: 1.7rem;
         }
         #find-button {
-            height: 36px;
-            font-size: 16px;
+            height: 3.5rem;
+            font-size: 2rem;
             background-color: grey;
             color: white;
             border: none;
@@ -40,10 +40,12 @@
         }
         #seating-layout {
             display: none;
-            grid-template-rows: repeat(17, 40px);
-            grid-template-columns: repeat(6, 40px);
-            gap: 8px;
-            padding-top: 5rem;
+            grid-template-rows: repeat(17, 3.3rem);
+            grid-template-columns: repeat(6, 3.3rem);
+            row-gap: 0.5rem;
+            column-gap: 1.2rem;
+            padding-top: 15rem;
+            padding-bottom: 15rem;
         }
         .seat {
             border-radius: 50%;
@@ -55,10 +57,10 @@
             align-items: center;
         }
         .highlight {
-            box-shadow: 0 0 1rem #d7d7d3;
+            box-shadow: 0 0 1.5rem #f3f3f2;
             transform: scale(1.1);
             font-weight: bold;
-            font-size: 12px;
+            font-size: 0.8rem;
             color: #FFDF00;
             text-shadow: 
             -1px -1px 0 #000,  
@@ -67,13 +69,19 @@
             1px 1px 0 #000;
             z-index: 1;
         }
+        .table {
+            background-color: white;
+            z-index: -1;
+            width: 3.5rem;
+            justify-self: center;
+        }
         @media (max-width: 420px) {
             #seating-layout {
-                grid-template-rows: repeat(17, 40px);
-                grid-template-columns: repeat(6, 40px);
+                grid-template-rows: repeat(17, 3.3rem);
+                grid-template-columns: repeat(6, 3.3rem);
             }
             #input-name {
-                width: 200px;
+                width: 20rem;
             }
         }
     </style>
@@ -127,6 +135,19 @@
             seatDiv.style.gridColumn = guest.c;
             layout.appendChild(seatDiv);
         });
+        // Create left table
+        const leftTable = document.createElement('div');
+        leftTable.classList.add('table');
+        leftTable.style.gridColumn = '1 / 3';
+        leftTable.style.gridRow = '1 / 18';
+        layout.appendChild(leftTable);
+
+        // Create right table
+        const rightTable = document.createElement('div');
+        rightTable.classList.add('table');
+        rightTable.style.gridColumn = '5 / 7';
+        rightTable.style.gridRow = '1 / 18';
+        layout.appendChild(rightTable);
         // Event listener for button
         const button = document.getElementById('find-button');
         button.addEventListener('click', () => {
