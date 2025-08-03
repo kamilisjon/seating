@@ -14,6 +14,7 @@
             position: relative;
             overflow: visible;
             background-color: rgb(17, 17, 17);
+            margin: 0;
         }
         .container {
             height: fit-content;
@@ -44,6 +45,10 @@
             grid-template-columns: repeat(6, 3.3rem);
             row-gap: 0.5rem;
             column-gap: 1.2rem;
+            padding-top: 2rem;
+            padding-bottom: 2rem;
+            padding-left: 2rem;
+            padding-right: 2rem;
         }
         .seat {
             border-radius: 50%;
@@ -75,11 +80,10 @@
         }
         #planet {
             position: absolute;
-            left: 0;
-            top: 15rem;
-            transform: translateY(-50%);
-            width: 40rem;
-            height: 40rem;
+            left: -40vh;
+            top: 20vh;
+            width: 80vh;
+            height: 80vh;
             background-image: url('https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/3f4c4b7d-a2ad-49a4-ad0d-2327cab52046/decij2u-a630d864-8d06-4dd8-93f1-613204c24718.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcLzNmNGM0YjdkLWEyYWQtNDlhNC1hZDBkLTIzMjdjYWI1MjA0NlwvZGVjaWoydS1hNjMwZDg2NC04ZDA2LTRkZDgtOTNmMS02MTMyMDRjMjQ3MTgucG5nIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.gS0iTQw7VJ79khiifJUMZFSxG-N_MsKMN38BLJTosig');
             background-size: cover;
             background-position: center;
