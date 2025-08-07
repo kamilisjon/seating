@@ -17,24 +17,16 @@
             background-color: rgb(34, 33, 33);
         }
         .container {
-            height: 100vh;
+            height: fit-content;
             display: flex;
             width: 100%;
             flex-direction: column;
-            justify-content: space-between;
+            justify-content: center;
             align-items: center;
-        }
-        .container.input-focused {
-            justify-content: flex-start;
-        }
-        #welcome {
-            font-size: 2.5rem;
-            margin-top: 2.5rem;
         }
         #search-container {
             position: relative;
             width: 90%;
-            margin-bottom: 2rem;
         }
         #input-name {
             border-radius: 0.5rem;
@@ -46,15 +38,18 @@
         #suggestions {
             border-radius: 0.5rem;
             position: absolute;
-            width: 100%;
+            width: 90%;
             max-height: 20rem;
             overflow-y: auto;
-            background-color: rgb(184, 173, 173);
+            background-color: rgb(255, 255, 255);
             color: black;
             display: none;
             z-index: 10;
             border: 1px solid #ccc;
             border-top: none;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
         }
         .suggestion-item {
             padding: 0.5rem;
@@ -118,7 +113,6 @@
 </head>
 <body>
     <div class="container">
-        <div id="welcome">Sveiki atvykę!</div>
         <div id="search-container">
             <input id="input-name" placeholder="Įveskite vardą">
             <div id="suggestions"></div>
@@ -186,8 +180,10 @@
         const input = document.getElementById('input-name');
         const suggestionsDiv = document.getElementById('suggestions');
         input.addEventListener('input', handleInput);
-        input.addEventListener('focus', () => {
-            document.querySelector('.container').classList.add('input-focused');
+        input.addEventListener('blur', () => {
+            setTimeout(() => {
+                suggestionsDiv.style.display = 'none';
+            }, 100);
         });
         function handleInput() {
             const value = input.value.trim().toLowerCase();
@@ -219,7 +215,6 @@
                                 }
                             });
                             document.getElementById('search-container').style.display = 'none';
-                            document.getElementById('welcome').style.display = 'none';
                             layout.style.display = 'grid';
                         } else {
                             alert('Vardas nerastas');
