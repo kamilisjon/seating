@@ -54,8 +54,8 @@
         }
         #seating-layout {
             display: none;
-            grid-template-rows: repeat(17, 7.5vw);
-            grid-template-columns: repeat(8, 7.5vw);
+            grid-template-rows: repeat(17, 8vw);
+            grid-template-columns: repeat(8, 8vw);
             row-gap: 0.5vw;
             column-gap: 2vw;
             padding-top: 4vw;
@@ -71,15 +71,16 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            z-index: 3;
+            z-index: 4;
         }
         .highlight {
-            box-shadow: 0 0 8vw 2vw #ffffff;
+            border-radius: 50%;
+            box-shadow: 0 0 6vw 2vw #ffffff;
             z-index: 3;
         }
         .name_tag {
             font-weight: bold;
-            font-size: 2vw;
+            font-size: 2.5vw;
             color: #ffffff;
             z-index: 5;
             display: flex;
@@ -142,6 +143,10 @@
         // Create seat elements
         const layout = document.getElementById('seating-layout');
         guestList.forEach(guest => {
+            const highlightDiv = document.createElement('div');
+            highlightDiv.id = guest.name + "-highlight";
+            highlightDiv.style.gridRow = guest.r;
+            highlightDiv.style.gridColumn = guest.c;
             const moonDiv = document.createElement('div');
             moonDiv.id = guest.name;
             moonDiv.classList.add('seat');
@@ -151,6 +156,7 @@
             seatDiv.id = guest.name + "seat";
             seatDiv.style.gridRow = guest.r;
             seatDiv.style.gridColumn = clm_to_name_position_map[guest.c];
+            layout.appendChild(highlightDiv);
             layout.appendChild(moonDiv);
             layout.appendChild(seatDiv);
         });
@@ -198,8 +204,8 @@
                         if (guestSelected) {
                             guestList.forEach(g2 => {
                                 if (guestSelected.grp === g2.grp) {
-                                    const moonDiv = document.getElementById(g2.name);
-                                    moonDiv.classList.add('highlight');
+                                    const highlightDiv = document.getElementById(g2.name + "-highlight");
+                                    highlightDiv.classList.add('highlight');
                                     const seatDiv = document.getElementById(g2.name+"seat");
                                     seatDiv.classList.add('name_tag');
                                     seatDiv.innerText = g2.name;
