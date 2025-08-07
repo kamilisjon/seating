@@ -60,7 +60,7 @@
             padding-top: 4vw;
             padding-bottom: 4vw;
             padding-left: 4vw;
-            padding-right: 4vw;
+            padding-right: 10vw;
         }
         .seat {
             border-radius: 50%;
@@ -89,7 +89,7 @@
         #planet {
             position: absolute;
             left: 80vw;
-            top: 40vh;
+            top: 30%;
             width: 80vw;
             height: 80vw;
             background-image: url('https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/3f4c4b7d-a2ad-49a4-ad0d-2327cab52046/decij2u-a630d864-8d06-4dd8-93f1-613204c24718.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcLzNmNGM0YjdkLWEyYWQtNDlhNC1hZDBkLTIzMjdjYWI1MjA0NlwvZGVjaWoydS1hNjMwZDg2NC04ZDA2LTRkZDgtOTNmMS02MTMyMDRjMjQ3MTgucG5nIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.gS0iTQw7VJ79khiifJUMZFSxG-N_MsKMN38BLJTosig');
@@ -111,23 +111,23 @@
     <div id="planet"></div>
     <script>
         const guestList = [
-            {name:"Benas",c:1,r:1,grp:1}, {name:"Rugilė",c:2,r:1,grp:16}, {name:"Valerija K.",c:4,r:1,grp:17}, {name:"Gelija",c:5,r:1,grp:17},
-            {name:"Gabija",c:1,r:2,grp:1}, {name:"Domas",c:2,r:2,grp:15}, {name:"Gvidas",c:4,r:2,grp:17}, {name:"Sofija Geč.",c:5,r:2,grp:26},
-            {name:"Mantvydas",c:1,r:3,grp:2}, {name:"Dovilė",c:2,r:3,grp:15}, {name:"Vaidas",c:4,r:3,grp:17}, {name:"Leonas Geč.",c:5,r:3,grp:26},
-            {name:"Eglė",c:1,r:4,grp:3}, {name:"Julius",c:2,r:4,grp:14}, {name:"Natalija",c:4,r:4,grp:17}, {name:"Sandra Geč.",c:5,r:4,grp:26},
-            {name:"Vaiva",c:1,r:5,grp:3}, {name:"Odeta",c:2,r:5,grp:14}, {name:"Zigmas",c:4,r:5,grp:18}, {name:"Egidijus Geč.",c:5,r:5,grp:26},
-            {name:"Ieva",c:1,r:6,grp:4}, {name:"Tomas",c:2,r:6,grp:13}, {name:"Jūratė",c:4,r:6,grp:18}, {name:"Kazimieras N.",c:5,r:6,grp:21},
-            {name:"Kamilis",c:1,r:7,grp:5}, {name:"Karolina",c:2,r:7,grp:13}, {name:"Valerija V.",c:4,r:7,grp:19}, {name:"Adelė N.",c:5,r:7,grp:21},
-            {name:"Austėja",c:1,r:8,grp:5}, {name:"Tautvydas",c:2,r:8,grp:12}, {name:"Joana",c:4,r:8,grp:20}, {name:"Algimantas Gedv.",c:5,r:8,grp:20},
-            {name:"Kristupas",c:1,r:9,grp:6}, {name:"Algimantas Sk.",c:2,r:9,grp:11}, {name:"Martynas",c:4,r:9,grp:21}, {name:"Sandra Gedv.",c:5,r:9,grp:20},
-            {name:"Jadvyga",c:1,r:10,grp:6}, {name:"Rūta",c:2,r:10,grp:11}, {name:"Dovydas",c:4,r:10,grp:22}, {name:"Sofija Gedv.",c:5,r:10,grp:20},
-            {name:"Stasys",c:1,r:11,grp:7}, {name:"Kazimieras P.",c:2,r:11,grp:10}, {name:"Eva",c:4,r:11,grp:22}, {name:"Mantas",c:5,r:11,grp:25},
-            {name:"Gina",c:1,r:12,grp:7}, {name:"Milda",c:2,r:12,grp:10}, {name:"Sigita",c:4,r:12,grp:22}, {name:"Giedrė",c:5,r:12,grp:25},
-            {name:"Ringaudas",c:1,r:13,grp:7}, {name:"Ruslan",c:2,r:13,grp:9}, {name:"Vytautas",c:4,r:13,grp:22}, {name:"Vitalija",c:5,r:13,grp:24},
-            {name:"Markas Mar.",c:1,r:14,grp:8}, {name:"Aušra",c:2,r:14,grp:9}, {name:"Laura",c:4,r:14,grp:23}, {name:"Alvydas",c:5,r:14,grp:24},
-            {name:"Sofija Mar.",c:1,r:15,grp:8}, {name:"Jonas",c:2,r:15,grp:8}, {name:"Marius",c:4,r:15,grp:23}, {name:"Leonas",c:5,r:15,grp:24},
+            {name:"Benas",c:1,r:1,grp:1}, {name:"Rugilė",c:2,r:1,grp:30}, {name:"Valerija K.",c:4,r:1,grp:17}, {name:"Gelija",c:5,r:1,grp:17},
+            {name:"Gabija",c:1,r:2,grp:2}, {name:"Domas",c:2,r:2,grp:30}, {name:"Gvidas",c:4,r:2,grp:17}, {name:"Sofija Geč.",c:5,r:2,grp:26},
+            {name:"Mantvydas",c:1,r:3,grp:3}, {name:"Dovilė",c:2,r:3,grp:16}, {name:"Vaidas",c:4,r:3,grp:17}, {name:"Leonas Geč.",c:5,r:3,grp:26},
+            {name:"Eglė",c:1,r:4,grp:3}, {name:"Julius",c:2,r:4,grp:16}, {name:"Natalija",c:4,r:4,grp:17}, {name:"Sandra Geč.",c:5,r:4,grp:26},
+            {name:"Vaiva",c:1,r:5,grp:4}, {name:"Odeta",c:2,r:5,grp:15}, {name:"Zigmas",c:4,r:5,grp:18}, {name:"Egidijus Geč.",c:5,r:5,grp:26},
+            {name:"Ieva",c:1,r:6,grp:5}, {name:"Tomas",c:2,r:6,grp:15}, {name:"Jūratė",c:4,r:6,grp:18}, {name:"Kazimieras N.",c:5,r:6,grp:21},
+            {name:"Kamilis",c:1,r:7,grp:5}, {name:"Karolina",c:2,r:7,grp:14}, {name:"Valerija V.",c:4,r:7,grp:19}, {name:"Adelė N.",c:5,r:7,grp:21},
+            {name:"Austėja",c:1,r:8,grp:6}, {name:"Tautvydas",c:2,r:8,grp:14}, {name:"Joana",c:4,r:8,grp:20}, {name:"Algimantas Gedv.",c:5,r:8,grp:20},
+            {name:"Kristupas",c:1,r:9,grp:6}, {name:"Algimantas Sk.",c:2,r:9,grp:13}, {name:"Martynas",c:4,r:9,grp:21}, {name:"Sandra Gedv.",c:5,r:9,grp:20},
+            {name:"Jadvyga",c:1,r:10,grp:7}, {name:"Rūta",c:2,r:10,grp:12}, {name:"Dovydas",c:4,r:10,grp:22}, {name:"Sofija Gedv.",c:5,r:10,grp:20},
+            {name:"Stasys",c:1,r:11,grp:7}, {name:"Kazimieras P.",c:2,r:11,grp:12}, {name:"Eva",c:4,r:11,grp:22}, {name:"Mantas",c:5,r:11,grp:25},
+            {name:"Gina",c:1,r:12,grp:7}, {name:"Milda",c:2,r:12,grp:11}, {name:"Sigita",c:4,r:12,grp:22}, {name:"Giedrė",c:5,r:12,grp:25},
+            {name:"Ringaudas",c:1,r:13,grp:7}, {name:"Ruslan",c:2,r:13,grp:11}, {name:"Vytautas",c:4,r:13,grp:22}, {name:"Vitalija",c:5,r:13,grp:24},
+            {name:"Markas Mar.",c:1,r:14,grp:8}, {name:"Aušra",c:2,r:14,grp:10}, {name:"Laura",c:4,r:14,grp:23}, {name:"Alvydas",c:5,r:14,grp:24},
+            {name:"Sofija Mar.",c:1,r:15,grp:8}, {name:"Jonas",c:2,r:15,grp:10}, {name:"Marius",c:4,r:15,grp:23}, {name:"Leonas",c:5,r:15,grp:24},
             {name:"Aurelija Mar.",c:1,r:16,grp:8}, {name:"Aldona",c:2,r:16,grp:8}, {name:"Morta",c:4,r:16,grp:23}, {name:"Marija",c:5,r:16,grp:24},
-            {name:"Karolis Mar.",c:1,r:17,grp:8}, {name:"Gediminas",c:2,r:17,grp:7}, {name:"Herkus",c:4,r:17,grp:23}, {name:"Adas",c:5,r:17,grp:24},
+            {name:"Karolis Mar.",c:1,r:17,grp:8}, {name:"Gediminas",c:2,r:17,grp:8}, {name:"Herkus",c:4,r:17,grp:23}, {name:"Adas",c:5,r:17,grp:24},
         ];
         // Sort guests by name
         guestList.sort((a, b) => a.name.localeCompare(b.name));
