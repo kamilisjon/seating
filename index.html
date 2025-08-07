@@ -17,16 +17,24 @@
             background-color: rgb(34, 33, 33);
         }
         .container {
-            height: fit-content;
+            height: 100vh;
             display: flex;
             width: 100%;
             flex-direction: column;
-            justify-content: center;
+            justify-content: space-between;
             align-items: center;
+        }
+        .container.input-focused {
+            justify-content: flex-start;
+        }
+        #welcome {
+            font-size: 2rem;
+            margin-top: 2rem;
         }
         #search-container {
             position: relative;
             width: 90%;
+            margin-bottom: 2rem;
         }
         #input-name {
             border-radius: 0.5rem;
@@ -110,6 +118,7 @@
 </head>
 <body>
     <div class="container">
+        <div id="welcome">Sveiki atvykę!</div>
         <div id="search-container">
             <input id="input-name" placeholder="Įveskite vardą">
             <div id="suggestions"></div>
@@ -177,6 +186,9 @@
         const input = document.getElementById('input-name');
         const suggestionsDiv = document.getElementById('suggestions');
         input.addEventListener('input', handleInput);
+        input.addEventListener('focus', () => {
+            document.querySelector('.container').classList.add('input-focused');
+        });
         input.addEventListener('blur', () => {
             setTimeout(() => {
                 suggestionsDiv.style.display = 'none';
@@ -212,6 +224,7 @@
                                 }
                             });
                             document.getElementById('search-container').style.display = 'none';
+                            document.getElementById('welcome').style.display = 'none';
                             layout.style.display = 'grid';
                         } else {
                             alert('Vardas nerastas');
