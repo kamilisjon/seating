@@ -6,11 +6,11 @@
     <title>Sėdėjimas</title>
     <style>
         body {
+            background-image: url('https://i.pinimg.com/736x/85/e2/d0/85e2d0d867dc00bc9d5f2b2e330861b5.jpg');
             background-size: cover;
             background-attachment: scroll;
             color: white;
             font-family: "Arial", sans-serif;
-            background-image: url('https://i.pinimg.com/736x/85/e2/d0/85e2d0d867dc00bc9d5f2b2e330861b5.jpg');
             text-align: center;
             overflow-x: hidden;
             overflow-y: scroll;
@@ -28,18 +28,20 @@
             align-items: center;
         }
         #search-container {
+            z-index: 10;
             position: relative;
             width: 90%;
         }
         #input-name {
+            z-index: 10;
             border-radius: 0.5rem;
-            margin-top: 2rem;
             width: 100%;
             height: 4rem;
             font-size: 1.7rem;
             text-align: center;
         }
         #suggestions {
+            z-index: 10;
             border-radius: 0.5rem;
             position: absolute;
             width: 100%;
@@ -47,7 +49,6 @@
             overflow-y: auto;
             background-color: rgb(255, 255, 255);
             color: black;
-            z-index: 10;
             flex-direction: column;
             justify-content: center;
             align-items: center;
@@ -68,73 +69,82 @@
             padding-right: 10vw;
         }
         .seat {
-            border-radius: 50%;
+            z-index: 4;
             background-image: url('https://m.media-amazon.com/images/I/81SG5Wy+-mL.png');
+            border-radius: 50%;
             background-position: center;
             background-size: 115%;
             display: flex;
             justify-content: center;
             align-items: center;
-            z-index: 4;
         }
         .highlight {
+            z-index: 3;
             border-radius: 50%;
             box-shadow: 0 0 6vw 2vw #ffffff;
-            z-index: 3;
         }
         .name_tag {
+            z-index: 5;
             font-weight: bold;
             font-size: 2.5vw;
             color: #ffffff;
-            z-index: 5;
             display: flex;
             justify-content: center;
             align-items: center;
             text-align: center;
         }
         .table {
-            background-color: white;
             z-index: 2;
+            background-color: white;
             width: 5vw;
             justify-self: center;
         }
         #planet {
-            position: absolute;
-            left: 80vw;
-            top: 30%;
-            width: 80vw;
-            height: 80vw;
+            z-index: 1;
             background-image: url('https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/3f4c4b7d-a2ad-49a4-ad0d-2327cab52046/decij2u-a630d864-8d06-4dd8-93f1-613204c24718.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcLzNmNGM0YjdkLWEyYWQtNDlhNC1hZDBkLTIzMjdjYWI1MjA0NlwvZGVjaWoydS1hNjMwZDg2NC04ZDA2LTRkZDgtOTNmMS02MTMyMDRjMjQ3MTgucG5nIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.gS0iTQw7VJ79khiifJUMZFSxG-N_MsKMN38BLJTosig');
+            border-radius: 50%;
             background-size: cover;
             background-position: center;
-            border-radius: 50%;
-            z-index: 1;
+            position: absolute;
+            width: 80vw;
+            height: 80vw;
+            left: 80vw;
+            top: 30%;
         }
         #ieva {
-            position: absolute;
-            left: -5vw;
-            bottom: 0%;
-            width: 60vw;
-            height: 73.8vw;
+            z-index: 5;
             background-image: url('https://i.ibb.co/Q3z7tZvF/Picture1.png');
             background-size: cover;
             background-position: center;
-            z-index: 5;
-        }
-        #kamilis {
             position: absolute;
-            left: 50vw;
-            bottom: 0%;
             width: 60vw;
             height: 73.8vw;
+            left: -5vw;
+            bottom: 0%;
+        }
+        #kamilis {
+            z-index: 4;
             background-image: url('https://i.ibb.co/TxjQ8tFW/Picture2.png');
             background-size: cover;
             background-position: center;
-            z-index: 4;
+            position: absolute;
+            width: 60vw;
+            height: 73.8vw;
+            left: 50vw;
+            bottom: 0%;
+        }
+        #welcome-message {
+            z-index: 9;
+            color: white;
+            font-size: 3rem;
+            top: 50%;
+            align-items: center;
+            text-align: center;
         }
     </style>
 </head>
 <body>
+    <div id="welcome-message">Sveiki atvykę!</div>
     <div class="container">
         <div id="search-container">
             <input id="input-name" placeholder="Įveskite vardą">
@@ -237,6 +247,7 @@
                             document.getElementById('search-container').style.display = 'none';
                             document.getElementById('kamilis').style.display = 'none';
                             document.getElementById('ieva').style.display = 'none';
+                            document.getElementById('welcome-message').style.display = 'none';
                             layout.style.display = 'grid';
                         } else {
                             alert('Vardas nerastas');
