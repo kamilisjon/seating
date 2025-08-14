@@ -30,6 +30,7 @@
         }
         #input-name {
             border-radius: 0.5rem;
+            margin-top: 3rem;
             width: 90%;
             height: 3rem;
             font-size: 1.7rem;
@@ -180,11 +181,6 @@
         const input = document.getElementById('input-name');
         const suggestionsDiv = document.getElementById('suggestions');
         input.addEventListener('input', handleInput);
-        input.addEventListener('blur', () => {
-            setTimeout(() => {
-                suggestionsDiv.style.display = 'none';
-            }, 100);
-        });
         function handleInput() {
             const value = input.value.trim().toLowerCase();
             suggestionsDiv.innerHTML = '';
